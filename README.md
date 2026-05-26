@@ -1,136 +1,363 @@
-⚡ QueryX — AI-Powered Text-to-SQL Generator
-Turn plain English into production-ready SQL queries — instantly. Built by Aman Srivastava
+# ⚡ QueryX — AI-Powered Text-to-SQL Generator
 
-What is QueryX?
-QueryX is a sleek, AI-powered web application that converts natural language questions into optimized SQL queries in milliseconds. No SQL expertise required — just describe what data you need and QueryX handles the rest.
+<div align="center">
 
-It uses Llama 3.3 70B running on Groq's ultra-fast inference API to generate clean, PostgreSQL-compatible SQL with full schema awareness.
+## 🚀 Turn Plain English into Production-Ready SQL — Instantly
 
-Features
-AI-Powered — Uses Llama 3.3 70B via Groq for accurate, context-aware SQL generation
-Blazing Fast — Groq delivers responses at ~750 tokens/second (near-instant)
-Schema-Aware — Provide your CREATE TABLE schema for precise column and table names
-Syntax Highlighting — Color-coded SQL output with line numbers
-One-Click Copy — Copy generated SQL to clipboard with a toast notification
-Query History — Browse and re-use your last 8 generated queries
-Example Prompts — Click-to-fill starter prompts with preloaded schema
-Keyboard Shortcut — Ctrl + Enter to generate instantly
-Fully Responsive — Works on desktop and mobile
-Tech Stack
-Layer	Technology
-Frontend	React 18 + Vite 5
-Styling	Vanilla CSS (custom design system)
-AI Model	Meta Llama 3.3 70B Instruct
-Inference API	Groq (groq.com)
-Icons	Lucide React
-Fonts	Inter + JetBrains Mono
-Getting Started
-Prerequisites
-Node.js v18 or higher
-A free Groq API Key — sign up at https://console.groq.com
-Step 1 — Clone the Repository
+### Built with ❤️ by Aman Srivastava
 
-git clone https://github.com/your-username/queryx.git
-cd queryx
-Step 2 — Install Dependencies
-npm install
-Step 3 — Set Up Environment Variables
-Create a .env file in the root directory and add:
+<img src="https://img.shields.io/badge/AI-Powered-blue?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Llama%203.3%2070B-Groq-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react" />
+<img src="https://img.shields.io/badge/Vite-5-646CFF?style=for-the-badge&logo=vite" />
+<img src="https://img.shields.io/badge/PostgreSQL-Compatible-336791?style=for-the-badge&logo=postgresql" />
 
-VITE_GROQ_API_KEY=your_groq_api_key_here
-Get your free API key at: https://console.groq.com
+<br/>
+<br/>
 
-Step 4 — Start the Development Server
-npm run dev
-Open http://localhost:5173 in your browser.
+### 🧠 Ask Questions in English → ⚡ Get Optimized SQL in Milliseconds
 
-Project Structure
+</div>
 
-queryx/
-├── src/
-│   ├── lib/
-│   │   ├── sqlcoder.js      ← Groq API integration & prompt engineering
-│   │   └── utils.js         ← SQL syntax highlighter & time utilities
-│   ├── App.jsx              ← Main UI component
-│   ├── index.css            ← Complete design system
-│   └── main.jsx             ← React entry point
-├── .env                     ← API keys (never commit this)
-├── index.html
-├── package.json
-└── vite.config.js
-How It Works
-User Input — You type a natural language question Example: "Show the top 10 customers by revenue"
+---
 
-Schema Context — You optionally paste your database schema (CREATE TABLE statements)
+# 🌟 What is QueryX?
 
-Prompt Engineering — QueryX builds a structured prompt with strict SQL-only output rules
+**QueryX** is a modern AI-powered web application that transforms natural language into clean, optimized, production-ready SQL queries.
 
-Groq Inference — The prompt is sent to Llama 3.3 70B running on Groq's LPU hardware
+No SQL expertise required — simply describe the data you need, and QueryX intelligently generates accurate PostgreSQL-compatible SQL using **Meta Llama 3.3 70B** running on **Groq's ultra-fast inference engine**.
 
-SQL Output — The response is cleaned, syntax-highlighted, and displayed with line numbers
+---
 
-Example
-Question you type:
+# ✨ Features
 
-Show the top 10 customers by total order value
-Schema you provide:
+<table>
+<tr>
+<td width="50%">
 
-sql
+## 🤖 AI-Powered SQL Generation
+Uses **Llama 3.3 70B** via Groq for highly accurate, context-aware SQL generation.
 
-CREATE TABLE customers (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(100),
-  email VARCHAR(150)
-);
-CREATE TABLE orders (
-  id SERIAL PRIMARY KEY,
-  customer_id INT,
-  total DECIMAL(10,2)
-);
-SQL QueryX generates:
+## ⚡ Blazing Fast Responses
+Groq delivers responses at near-instant speed (~750 tokens/sec).
 
-sql
+## 🧠 Schema Awareness
+Paste your `CREATE TABLE` schema for intelligent table & column mapping.
 
+## 🎨 Syntax Highlighting
+Beautiful color-coded SQL output with line numbers.
+
+## 📋 One-Click Copy
+Copy generated SQL instantly with toast notifications.
+
+</td>
+
+<td width="50%">
+
+## 🕘 Query History
+Access and reuse your last 8 generated queries.
+
+## 💡 Example Prompts
+Preloaded prompts help users get started quickly.
+
+## ⌨️ Keyboard Shortcuts
+Press `Ctrl + Enter` to generate SQL instantly.
+
+## 📱 Fully Responsive
+Optimized for desktop, tablet, and mobile devices.
+
+## 🌙 Clean Developer UI
+Minimal, modern interface built for productivity.
+
+</td>
+</tr>
+</table>
+
+---
+
+# 🖼️ Preview
+
+```txt
+💬 User Prompt:
+"Show the top 10 customers by total order value"
+
+⚡ QueryX Output:
 SELECT c.id, c.name, c.email, SUM(o.total) AS total_order_value
 FROM customers c
 JOIN orders o ON c.id = o.customer_id
 GROUP BY c.id, c.name, c.email
 ORDER BY total_order_value DESC
 LIMIT 10;
-Environment Variables
-Variable	Required	Description
-VITE_GROQ_API_KEY	Yes	Your Groq API key from console.groq.com
-VITE_GEMINI_API_KEY	No	Google Gemini key (optional fallback)
-Never commit your .env file. It is already listed in .gitignore.
+```
 
-Build for Production
+---
+
+# 🛠️ Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | React 18 + Vite 5 |
+| Styling | Vanilla CSS |
+| AI Model | Meta Llama 3.3 70B Instruct |
+| Inference API | Groq |
+| Icons | Lucide React |
+| Fonts | Inter + JetBrains Mono |
+
+---
+
+# ⚙️ Getting Started
+
+## 📌 Prerequisites
+
+Before running the project, make sure you have:
+
+- Node.js v18+
+- A free Groq API key from:
+  
+👉 https://console.groq.com
+
+---
+
+# 📥 Installation
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/your-username/queryx.git
+
+cd queryx
+```
+
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 3️⃣ Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_GROQ_API_KEY=your_groq_api_key_here
+```
+
+Optional fallback:
+
+```env
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+⚠️ Never commit your `.env` file.
+
+---
+
+## 4️⃣ Start Development Server
+
+```bash
+npm run dev
+```
+
+Open:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# 📂 Project Structure
+
+```bash
+queryx/
+│
+├── src/
+│   ├── lib/
+│   │   ├── sqlcoder.js
+│   │   └── utils.js
+│   │
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+│
+├── .env
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+---
+
+# 🧠 How QueryX Works
+
+## 1️⃣ User Input
+The user types a plain English request.
+
+Example:
+
+```txt
+Show the top 10 customers by revenue
+```
+
+---
+
+## 2️⃣ Schema Context
+Users can provide SQL schema (`CREATE TABLE` statements).
+
+---
+
+## 3️⃣ Prompt Engineering
+QueryX builds a structured AI prompt with strict SQL-only generation rules.
+
+---
+
+## 4️⃣ Groq Inference
+The prompt is sent to **Llama 3.3 70B** running on Groq LPUs for ultra-fast inference.
+
+---
+
+## 5️⃣ SQL Output
+The generated SQL is cleaned, formatted, syntax-highlighted, and displayed beautifully.
+
+---
+
+# 🔥 Example
+
+## 💬 Input
+
+```sql
+CREATE TABLE customers (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(100),
+  email VARCHAR(150)
+);
+
+CREATE TABLE orders (
+  id SERIAL PRIMARY KEY,
+  customer_id INT,
+  total DECIMAL(10,2)
+);
+```
+
+### User Prompt
+
+```txt
+Show the top 10 customers by total order value
+```
+
+---
+
+## ⚡ Generated SQL
+
+```sql
+SELECT 
+    c.id,
+    c.name,
+    c.email,
+    SUM(o.total) AS total_order_value
+FROM customers c
+JOIN orders o
+ON c.id = o.customer_id
+GROUP BY c.id, c.name, c.email
+ORDER BY total_order_value DESC
+LIMIT 10;
+```
+
+---
+
+# 🔐 Environment Variables
+
+| Variable | Required | Description |
+|---|---|---|
+| `VITE_GROQ_API_KEY` | ✅ Yes | Groq API key |
+| `VITE_GEMINI_API_KEY` | ❌ Optional | Gemini fallback API |
+
+---
+
+# 🚀 Production Build
+
+```bash
 npm run build
-Output goes into the dist/ folder — ready to deploy to Vercel, Netlify, or GitHub Pages.
+```
 
-To deploy on Vercel:
+Production-ready files will be generated inside the `dist/` folder.
 
-Push your code to GitHub
-Go to vercel.com and import your repository
-Add VITE_GROQ_API_KEY in the Environment Variables section
-Click Deploy
-Roadmap
-Export queries as .sql file
-Multi-dialect support (MySQL, SQLite, BigQuery)
-Query explanation mode
-Saved query collections
-Dark / Light theme toggle
-Query optimization suggestions
-Contributing
-Contributions are welcome!
+---
 
-Fork the repository
-Create a new branch: git checkout -b feature/your-feature
-Commit your changes: git commit -m "feat: add your feature"
-Push to your branch: git push origin feature/your-feature
-Open a Pull Request
-License
-This project is licensed under the MIT License.
+# 🌍 Deploy on Vercel
 
-Made with love by Aman Srivastava
+## Simple Deployment Steps
 
-If you found this useful, give it a star on GitHub!
+### 1️⃣ Push code to GitHub
+
+### 2️⃣ Go to:
+👉 https://vercel.com
+
+### 3️⃣ Import Repository
+
+### 4️⃣ Add Environment Variable
+
+```env
+VITE_GROQ_API_KEY=your_api_key
+```
+
+### 5️⃣ Click Deploy 🚀
+
+---
+
+# 🗺️ Roadmap
+
+- ✅ Query History
+- ✅ Syntax Highlighting
+- 🔄 Export SQL as `.sql`
+- 🔄 Multi-dialect Support
+- 🔄 Query Explanation Mode
+- 🔄 Saved Query Collections
+- 🔄 Dark / Light Theme
+- 🔄 SQL Optimization Suggestions
+- 🔄 AI Chat Assistant
+
+---
+
+# 🤝 Contributing
+
+Contributions are always welcome!
+
+## Steps
+
+```bash
+# Fork the repository
+
+# Create feature branch
+git checkout -b feature/amazing-feature
+
+# Commit changes
+git commit -m "feat: add amazing feature"
+
+# Push branch
+git push origin feature/amazing-feature
+```
+
+Then open a Pull Request 🚀
+
+---
+
+# 📜 License
+
+Licensed under the MIT License.
+
+---
+
+<div align="center">
+
+# ❤️ Built by Aman Srivastava
+
+### If you found this project useful, consider giving it a ⭐ on GitHub
+
+## 🚀 QueryX — Making SQL Accessible with AI
+
+</div>
